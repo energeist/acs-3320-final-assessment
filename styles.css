@@ -482,4 +482,20 @@ header, footer {
 ticker-tape {
   text-align: center;
   margin: auto;
+  font-size: 2em;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  animation: ticker 10s linear infinite;
+  display: inline-block;
 }
+
+@keyframes ticker {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
