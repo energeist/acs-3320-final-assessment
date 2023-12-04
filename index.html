@@ -35,7 +35,6 @@
 				<ticker-tape><h1>...Color.com is awesome...</h1></ticker-tape>
 			</section>
 
-
 			<!-- section about - -->
 			<section id="about">
 				<header>
@@ -45,8 +44,6 @@
 				<p>Color is really important for making great <abbr title="Cascading Style Sheets">CSS</abbr> styles. <a href="#">Color.com is the most amazing place to get your colors.</a></p>
 			</section>
 
-
-			
 			<!-- Section Color Cards - This section contains three cards Style these -->
 			<section id="popular">
 				<div class="card">
@@ -65,8 +62,6 @@
 				</div>
 			</section>
 
-
-
 			<!-- Section Color Swatches - This section contains -->
 			<section id="swatches">
 				<header>
@@ -78,7 +73,7 @@
 				</div>
 			</section>
 
-			<section id="cart">
+			<section id="cart" class="card">
 				<header>
 					<h1>Cart</h1>
 				</header>
@@ -91,8 +86,6 @@
 					<!-- Total here -->
 				</div>
 			</section>
-
-
 
 			<!-- Contact form -->
 			<section id="contact">
@@ -135,7 +128,7 @@
 							<input type="radio" name="user">
 							Enthusiast
 						</label>
-						<button>Submit</button>
+						<button class="success">Submit</button>
 					</form>
 				</div>
 			</section>
@@ -259,10 +252,14 @@
       function showCart() {
         let str = ''
         for (let i = 0; i < cart.length; i += 1) {
-					// Shopping cart list item! 
+					// Shopping cart list item!
+          let itemColor = cart[i].name.split(' ')[1] 
+          let hue = (itemColor / swatchCount) * 360
+          let swatchColor = `hsl(${hue}, 100%, 50%)`
+
           str += `<li>
             <span>
-							<span>${cart[i].name}</span>
+							<span style="color: ${swatchColor};">${cart[i].name} @ </span>
 							<span>${cart[i].price}</span> 
 							<span>each x</span>
 							<span>${cart[i].qty}</span> 
@@ -271,15 +268,15 @@
 						</span>
             
 						<span>
-							<input class="update" data-name="${cart[i].name}" type="number" value="${cart[i].qty}">
-							<button class="add-one" data-name="${cart[i].name}"> + </button>
-							<button class="remove-one" data-name="${cart[i].name}"> - </button>
-							<button class="remove" data-name="${cart[i].name}">remove</button>
+							<input class="update" data-name="${cart[i].name}" type="number" value="${cart[i].qty}" style="width: 80px; height: 20px;">
+							<button class="add-one success" data-name="${cart[i].name}"> + </button>
+							<button class="remove-one danger" data-name="${cart[i].name}"> - </button>
+							<button class="remove danger" data-name="${cart[i].name}">remove</button>
 						</span>
           </li>`
         }
         itemsList.innerHTML = str
-        divTotal.innerHTML = getTotal()
+        divTotal.innerHTML = "Cart Total: $" + getTotal()
       }
 
       function getTotal() {

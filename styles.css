@@ -36,7 +36,6 @@ body {
   font-family: Oxygen, Roboto, system-ui, -apple-system, BlinkMacSystemFont;
   background-color: var(--color-background);
   color: var(--color-light);
-  padding: 1em;
   width: 100%;
 }
 
@@ -407,14 +406,15 @@ input:checked + .slider:before {
   list-style-type: none; 
 }
 
-/* extra styles */
+/* extra styles for assessment */
 
 .navbar ul li:first-child {
   font-size: 2em;
 }
 
 main {
-  min-width: 80%;
+  width: 90%;
+  margin: auto;
 }
 
 #popular {
@@ -453,6 +453,8 @@ main {
   position: sticky;
   top: 0;
   z-index: 1;
-  /* align-content: center; */
-  /* border-bottom: 3px solid black; */
+}
+
+ul, li {
+  list-style-type: none;
 }
