@@ -458,3 +458,28 @@ main {
 ul, li {
   list-style-type: none;
 }
+
+form * {
+  margin: 0.5em 0;
+}
+
+.grouped {
+  min-width: 20vh;
+  width: 40%;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header, footer {
+  text-align: center;
+}
+
+/* tickertape styles */
+
+ticker-tape {
+  text-align: center;
+  margin: auto;
+}
