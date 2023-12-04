@@ -1,0 +1,458 @@
+* {
+  margin: 0;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+  padding: 0;
+  line-height: 1em;
+}
+
+:root {
+  /* font size variables */
+  --base-font-size: 1em;
+  --heading-scale-factor: 1.2;
+
+  /* color variables */
+  --color-background: rgba(68, 47, 25, 1);
+  --color-foreground: rgba(194, 172, 147, 1);
+  --color-primary: rgba(147, 121, 93, 1);
+  --color-dark: rgba(106, 83, 59, 1);
+  --color-md-dark: rgba(106, 83, 59, 0.5);
+  --color-light:  rgba(233, 214, 192, 1);
+  --color-md-light: rgba(233, 214, 192, 0.5);
+  --color-lightest: rgba(255, 255, 255, 1);
+  --color-info: rgba(220, 171, 44, 1);
+  --color-md-info: rgba(220, 171, 44, 0.5);
+  --color-success: rgba(22, 74, 37, 1);
+  --color-md-success: rgba(22, 74, 37, 0.5);
+  --color-danger: rgba(193, 6, 6, 1);
+  --color-md-danger: rgba(193, 6, 6, 0.5);
+  --color-callout: rgba(0, 51, 153, 1);
+  --color-md-callout: rgba(0, 51, 153, 0.5);
+}
+
+body {
+  font-family: Oxygen, Roboto, system-ui, -apple-system, BlinkMacSystemFont;
+  background-color: var(--color-background);
+  color: var(--color-light);
+  padding: 1em;
+  width: 100%;
+}
+
+section {
+  /* min-height: 100vh; */
+  min-width: 90%;
+  padding-bottom: 1em;
+  margin-bottom: 1em;
+  border-bottom: 3px solid red;
+}
+
+p {
+  font-size: var(--base-font-size);
+}
+
+/* h5 will be the same size as a p element, 
+h4 -> h1 will scale up by a factor of the --heading-scale-factor variable, 
+h6 will scale down by the same */
+
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0.5em 0;
+}
+
+h1 {
+  font-size: calc(var(--base-font-size) * calc(pow(var(--heading-scale-factor), 4)));
+}
+
+h2 {
+  font-size: calc(var(--base-font-size) * calc(pow(var(--heading-scale-factor), 3)));
+}
+
+h3 {
+  font-size: calc(var(--base-font-size) * calc(pow(var(--heading-scale-factor), 2)));
+}
+
+h4 {
+  font-size: calc(var(--base-font-size) * var(--heading-scale-factor));
+}
+
+h5 {
+  font-size: 1em;
+}
+
+h6 {
+  font-size: calc(var(--base-font-size) * calc(pow(var(--heading-scale-factor), -1)));
+}
+
+/* button styles */
+
+button {
+  border: 1px solid black;
+  border-radius: 3px;
+  padding: 0.25em;
+  margin: 0.5em;
+  min-width: 5em;
+  min-height: 2em;
+
+}
+
+/* destructive button */
+
+button.danger {
+  background-color: var(--color-lightest);
+  border-color: var(--color-danger);
+  color: var(--color-danger);
+  cursor: pointer;
+}
+
+button.danger:hover {
+  background-color: var(--color-md-danger);
+  border-color: var(--color-danger);
+  color: var(--color-lightest);
+}
+
+button.danger:active {
+  background-color: var(--color-danger);
+  border-color: var(--color-danger);
+  color: var(--color-lightest);
+}
+
+/* success button */
+
+button.success {
+  background-color: var(--color-lightest);
+  border-color: var(--color-success);
+  color: var(--color-success);
+  cursor: pointer;
+}
+
+button.success:hover {
+  background-color: var(--color-md-success);
+  border-color: var(--color-success);
+  color: var(--color-lightest);
+}
+
+button.success:active {
+  background-color: var(--color-success);
+  border-color: var(--color-success);
+  color: var(--color-lightest);
+}
+
+/* link styles */
+
+a {
+  text-decoration: none;
+  color: var(--color-primary);
+  text-decoration: underline;
+  transition: all 0.5s ease;
+}
+
+a:hover {
+  color: var(--color-light);
+  text-decoration: wavy underline orange;
+  cursor: pointer;
+}
+
+/* navbar styles */
+
+.navbar {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 1em;
+  padding-bottom: 0.5em;
+  /* border-bottom: 3px solid black; */
+}
+
+.around {
+  justify-content: space-around;
+}
+
+.between {
+  justify-content: space-between;
+}
+
+.left {
+  justify-content: flex-start;
+}
+
+.right {
+  justify-content: flex-end;
+}
+
+.navbar > ul {
+  display: flex;
+  flex-direction: row;
+  align-items: end;
+}
+
+.navbar > ul > li {
+  list-style-type: none;
+  padding-bottom: 0.25em;
+  border-bottom: 3px solid var(--color-dark);
+  text-decoration-thickness: 3px;
+  margin: 0px 5px;
+}
+
+.navbar > ul > li > h1 {
+  padding: 0px;
+  margin: 0px;
+  display: inline;
+  line-height: 1em;
+}
+
+.navbar > ul > li > a {
+  position: relative;
+  text-decoration: none;
+  color: var(--color-light);
+}
+
+/* replace this with a svg steam animation that doesn't suck */
+
+.navbar > ul > li > a::before {
+  content: "";
+  position: absolute;
+  display: inline-block;
+  top: -1.25em;
+  left: 0;
+  height: 20px;
+  width: 100%;
+  background-image: none;
+  background-size: cover;
+  opacity: 0.5;
+}
+
+.navbar > ul > li > a:hover::before {
+  content: "";
+  position: absolute;
+  display: inline-block;
+  top: -2em;
+  left: calc(50% - 25px);
+  height: 50px;
+  width: 50px;
+  background-image: url("/steam.gif");
+  background-size: cover;
+}
+
+@keyframes steam {
+  0% {
+    opacity: 0.2;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.2;
+    top: -2.5em;
+  }
+}
+
+.navbar > ul > li > a:hover::before {
+  animation: steam 2.5s linear infinite;
+}
+
+pre {
+  width: 90%;
+  min-height: calc(4em + 6px);
+  padding: 0 1em;
+  margin: auto;
+  align-content: center;
+  justify-content: center;
+  border: 3px solid black;
+  font-family: monospace;
+  background-color: var(--color-md-light);
+  color: black;
+}
+
+code {
+  margin: auto 0 auto 0;
+  width: 100%;
+  align-items: center;
+}
+
+/* Additional styles in clipboardStyles.css & scripts.js to add clipboard copy to code blocks */
+
+form {
+  border: 2px solid black;
+  border-radius: 5px;
+  padding: 1em;
+  margin: auto;
+  background-color: var(--color-foreground);
+  color: var(--color-dark);
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+}
+
+.switch-box, .control-checkbox {
+  margin: 0.5em 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+form > label > span {
+  margin: 0.5em 0;
+}
+
+form > label > textarea {
+  min-height: 5em;
+}
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--color-light);
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: var(--color-info);
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: var(--color-background);
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px var(--color-light);
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.switch-label {
+  margin-right: 1em;
+}
+
+/* colour grid styles */
+
+.color-grid {
+  padding: 1em;
+  background-color: white;
+  display: grid;
+  border: 2px solid black;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(10, 1fr);
+  grid-gap: 1em;
+  margin: 1em auto;
+  width: 80%;
+  /* height: 70%; */
+}
+
+.color-grid > div {
+  border: 2px solid black;
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.page-footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  border-top: 3px solid black;
+  padding: 1em;
+}
+
+.page-footer > ul {
+  list-style-type: none; 
+}
+
+/* extra styles */
+
+.navbar ul li:first-child {
+  font-size: 2em;
+}
+
+main {
+  min-width: 80%;
+}
+
+#popular {
+  /* width: calc((100% / 3) - 1em); */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: stretch;
+  /* border: 3px solid black; */
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 0 0 calc(33.33% - 10px);
+  margin: 5px;
+  padding: 5px;
+  border: 3px solid black;
+  box-sizing: border-box;
+}
+
+.card img {
+  max-width: 100%;
+  height: auto;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+}
+
+#nav {
+  margin-top: -1em;
+  padding-top: 1em;
+  min-height: none;
+  background: var(--color-background);
+  max-height: 100px;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  /* align-content: center; */
+  /* border-bottom: 3px solid black; */
+}
